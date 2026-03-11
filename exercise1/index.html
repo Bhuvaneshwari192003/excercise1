@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Expense Tracker</title>
+
+<style>
+body{
+    font-family: Arial;
+    background:#f2f2f2;
+}
+
+.container{
+    width:350px;
+    margin:60px auto;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 0 10px gray;
+}
+
+h1{
+    text-align:center;
+}
+
+input{
+    width:90%;
+    padding:8px;
+    margin:5px 0;
+}
+
+button{
+    padding:8px 15px;
+    background:green;
+    color:white;
+    border:none;
+    cursor:pointer;
+}
+
+li{
+    margin:6px 0;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Expense Tracker</h1>
+
+<input type="text" id="desc" placeholder="Expense Name">
+
+<input type="number" id="amount" placeholder="Amount">
+
+<br><br>
+
+<button onclick="addExpense()">Add Expense</button>
+
+<h3>Total: ₹<span id="total">0</span></h3>
+
+<ul id="list"></ul>
+
+</div>
+
+
+<script>
+
+let total = 0;
+
+function addExpense(){
+
+let desc = document.getElementById("desc").value;
+let amount = parseFloat(document.getElementById("amount").value);
+
+if(desc=="" || amount==""){
+alert("Enter expense details");
+return;
+}
+
+total += amount;
+
+document.getElementById("total").innerText = total;
+
+let li = document.createElement("li");
+
+li.innerText = desc + " - ₹" + amount;
+
+document.getElementById("list").appendChild(li);
+
+document.getElementById("desc").value="";
+document.getElementById("amount").value="";
+
+}
+
+</script>
+
+</body>
+</html>
